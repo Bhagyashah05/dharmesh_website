@@ -37,8 +37,8 @@ const detailedServices = [
 
 export default function Services() {
   return (
-    <div className="bg-dark min-h-screen">
-      <section className="py-24 relative overflow-hidden bg-[#050505]">
+    <div className="bg-white dark:bg-dark min-h-screen transition-colors duration-300">
+      <section className="py-24 relative overflow-hidden bg-gray-50 dark:bg-[#050505] border-b border-gray-200 dark:border-white/5 transition-colors duration-300">
         <div className="container mx-auto px-6 relative z-10 text-center">
           <motion.span 
             initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} 
@@ -53,8 +53,10 @@ export default function Services() {
             Our Digital Services
           </motion.h1>
           <motion.p 
-            initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}
-            className="text-xl text-gray-400 max-w-3xl mx-auto"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.1 }}
+            className="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto"
           >
             End-to-end digital solutions designed to scale your business, outpace competitors, and maximize your return on investment.
           </motion.p>
@@ -66,28 +68,28 @@ export default function Services() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
             {detailedServices.map((service, idx) => (
               <motion.div 
-                key={idx}
+                key={service.title}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: idx * 0.1 }}
-                className="bg-white/5 p-8 md:p-12 rounded-3xl border border-white/10 hover:border-accent-blue flex flex-col h-full transition-colors"
+                className="bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-white/10 p-8 md:p-10 rounded-3xl hover:bg-gray-100 dark:hover:bg-white/10 transition-colors group shadow-sm dark:shadow-none"
               >
-                <div className="w-16 h-16 rounded-2xl bg-accent-blue/10 flex items-center justify-center mb-8">
-                  <service.icon className="w-8 h-8 text-accent-blue" />
+                <div className="w-16 h-16 bg-gradient-to-br from-accent-blue to-accent-purple rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 transition-transform">
+                  <service.icon className="w-8 h-8 text-white" />
                 </div>
-                <h3 className="text-3xl font-bold mb-4">{service.title}</h3>
-                <p className="text-gray-400 mb-8 leading-relaxed flex-grow">
+                <h3 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white">{service.title}</h3>
+                <p className="text-gray-600 dark:text-gray-400 leading-relaxed mb-8">
                   {service.description}
                 </p>
                 <div>
                   <h4 className="font-bold text-white mb-4 uppercase tracking-wider text-sm">Key Features:</h4>
                   <ul className="space-y-2">
                     {service.features.map((feature, fIdx) => (
-                      <li key={fIdx} className="flex items-center text-gray-300">
-                        <span className="w-1.5 h-1.5 rounded-full bg-accent-blue mr-3" />
-                        {feature}
-                      </li>
+                      <li key={feature} className="flex items-center gap-3 text-gray-700 dark:text-gray-300">
+                      <div className="w-2 h-2 rounded-full bg-accent-blue" />
+                      {feature}
+                    </li>
                     ))}
                   </ul>
                 </div>

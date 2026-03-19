@@ -13,28 +13,17 @@ const industries = [
 
 export default function IndustriesSection() {
   return (
-    <section className="py-24 bg-[#050505] border-y border-white/5 relative">
+    <section className="py-24 bg-gray-50 dark:bg-[#050505] relative border-y border-gray-200 dark:border-white/5 transition-colors duration-300">
       <div className="absolute top-0 inset-x-0 h-px w-full bg-gradient-to-r from-transparent via-white/10 to-transparent" />
       
       <div className="container mx-auto px-6">
         <div className="text-center max-w-2xl mx-auto mb-16">
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-3xl md:text-4xl font-bold mb-4"
-          >
-            Industries We Empower
-          </motion.h2>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
-            className="text-gray-400"
-          >
-            We have specialized frameworks adapted to the nuances of specific industry sectors, delivering targeted and highly-effective growth.
-          </motion.p>
+          <h2 className="text-4xl md:text-5xl font-extrabold mb-6 text-gray-900 dark:text-white">
+            Industries We <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent-blue to-accent-purple">Transform</span>
+          </h2>
+          <p className="text-gray-600 dark:text-gray-400 text-lg max-w-2xl mx-auto leading-relaxed">
+            Our proven strategies adapt to diverse markets, delivering exceptional results across specialized sectors.
+          </p>
         </div>
 
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
@@ -45,12 +34,10 @@ export default function IndustriesSection() {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ delay: idx * 0.1 }}
-              className="flex flex-col items-center justify-center p-8 rounded-2xl bg-white/5 border border-white/5 hover:bg-accent-blue/10 hover:border-accent-blue/50 transition-all cursor-pointer group"
+              className="bg-white dark:bg-white/5 border border-gray-200 dark:border-white/10 p-8 rounded-3xl hover:bg-gray-50 dark:hover:bg-white/10 transition-colors group cursor-pointer flex flex-col items-center shadow-sm dark:shadow-none"
             >
               <ind.icon className="w-10 h-10 text-gray-500 group-hover:text-accent-lightBlue mb-4 transition-colors" />
-              <span className="text-sm font-medium text-center text-gray-400 group-hover:text-white transition-colors">
-                {ind.name}
-              </span>
+              <h3 className="text-xl font-bold text-gray-900 dark:text-white group-hover:text-accent-blue transition-colors">{ind.name}</h3>
             </motion.div>
           ))}
         </div>

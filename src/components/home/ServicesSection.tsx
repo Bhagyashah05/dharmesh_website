@@ -38,7 +38,7 @@ const services = [
 
 export default function ServicesSection() {
   return (
-    <section className="py-24 bg-dark relative overflow-hidden">
+    <section className="py-24 bg-white dark:bg-dark relative overflow-hidden transition-colors duration-300">
       {/* Background elements */}
       <div className="absolute right-0 top-0 w-1/2 h-full bg-gradient-to-l from-white/5 to-transparent pointer-events-none" />
       
@@ -62,6 +62,9 @@ export default function ServicesSection() {
             >
               Comprehensive Digital<br />Solutions for Growth
             </motion.h2>
+            <p className="text-gray-600 dark:text-gray-400 text-lg max-w-2xl mx-auto leading-relaxed">
+              We provide a comprehensive suite of digital marketing services designed to elevate your brand and drive measurable growth.
+            </p>
           </div>
           <motion.div
             initial={{ opacity: 0, x: 20 }}
@@ -84,13 +87,13 @@ export default function ServicesSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: idx * 0.1 }}
-              className="p-8 rounded-2xl bg-white/5 border border-white/5 hover:border-accent-blue/50 hover:bg-white/[0.07] transition-all group"
+              className="bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-white/10 p-8 rounded-3xl hover:bg-gray-100 dark:hover:bg-white/10 transition-colors group cursor-pointer shadow-sm dark:shadow-none"
             >
               <div className="w-14 h-14 rounded-xl bg-accent-blue/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
                 <service.icon className="w-7 h-7 text-accent-blue" />
               </div>
-              <h3 className="text-xl font-bold mb-3">{service.title}</h3>
-              <p className="text-gray-400 leading-relaxed mb-6">
+              <h3 className="text-xl font-bold mb-4 text-gray-900 dark:text-white">{service.title}</h3>
+              <p className="text-gray-600 dark:text-gray-400 leading-relaxed mb-6">
                 {service.description}
               </p>
               <Link to="/services" className="text-sm font-bold text-transparent bg-clip-text bg-gradient-to-r from-accent-blue to-accent-purple group-hover:opacity-80 transition-opacity">

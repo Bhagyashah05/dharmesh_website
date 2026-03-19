@@ -29,7 +29,7 @@ const posts = [
 
 export default function BlogPreviewSection() {
   return (
-    <section className="py-24 bg-[#080808] border-t border-white/5">
+    <section className="py-24 bg-gray-50 dark:bg-[#050505] relative border-y border-gray-200 dark:border-white/5 transition-colors duration-300">
       <div className="container mx-auto px-6">
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-8">
           <div className="max-w-2xl">
@@ -46,10 +46,13 @@ export default function BlogPreviewSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1 }}
-              className="text-4xl md:text-5xl font-bold"
+              className="text-4xl md:text-5xl font-extrabold mb-6 text-gray-900 dark:text-white"
             >
-              News & Articles
+              Latest <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent-blue to-accent-purple">Insights</span>
             </motion.h2>
+            <p className="text-gray-600 dark:text-gray-400 text-lg max-w-2xl mx-auto leading-relaxed">
+              Stay ahead of the curve with our expert analyses, strategic insights, and industry news.
+            </p>
           </div>
           <motion.div
             initial={{ opacity: 0, x: 20 }}
@@ -71,9 +74,9 @@ export default function BlogPreviewSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: idx * 0.1 }}
-              className="group cursor-pointer"
+              className="bg-white dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-3xl overflow-hidden hover:bg-gray-100 dark:hover:bg-white/10 transition-colors group cursor-pointer flex flex-col h-full shadow-sm dark:shadow-none"
             >
-              <div className="overflow-hidden rounded-2xl aspect-video mb-6 relative">
+              <div className="overflow-hidden aspect-video mb-6 relative">
                 <img
                   src={post.image}
                   alt={post.title}
@@ -83,16 +86,18 @@ export default function BlogPreviewSection() {
                   {post.category}
                 </div>
               </div>
-              <div className="flex items-center gap-2 text-gray-500 text-sm mb-3">
-                <Calendar className="w-4 h-4" />
-                <span>{post.date}</span>
-              </div>
-              <h3 className="text-2xl font-bold leading-tight mb-4 group-hover:text-accent-blue transition-colors">
-                {post.title}
-              </h3>
-              <div className="flex items-center gap-2 text-accent-lightBlue font-medium group-hover:gap-4 transition-all w-fit">
-                <span>Read Article</span>
-                <ArrowRight className="w-4 h-4" />
+              <div className="p-6 flex flex-col flex-grow">
+                <div className="flex items-center gap-2 text-gray-500 text-sm mb-3">
+                  <Calendar className="w-4 h-4" />
+                  <span>{post.date}</span>
+                </div>
+                <h3 className="text-2xl font-bold leading-tight mb-4 group-hover:text-accent-blue transition-colors text-gray-900 dark:text-white flex-grow">
+                  {post.title}
+                </h3>
+                <div className="flex items-center gap-2 text-accent-lightBlue font-medium group-hover:gap-4 transition-all w-fit">
+                  <span>Read Article</span>
+                  <ArrowRight className="w-4 h-4" />
+                </div>
               </div>
             </motion.div>
           ))}

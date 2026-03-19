@@ -13,8 +13,8 @@ const allPosts = [
 
 export default function Blog() {
   return (
-    <div className="bg-dark min-h-screen">
-      <section className="py-24 relative overflow-hidden bg-[#050505] border-b border-white/5">
+    <div className="bg-white dark:bg-dark min-h-screen transition-colors duration-300">
+      <section className="py-24 relative overflow-hidden bg-gray-50 dark:bg-[#050505] border-b border-gray-200 dark:border-white/5 transition-colors duration-300">
         <div className="container mx-auto px-6 relative z-10 text-center">
           <motion.h1 
             initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} 
@@ -24,7 +24,7 @@ export default function Blog() {
           </motion.h1>
           <motion.p 
             initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }}
-            className="text-xl text-gray-400 max-w-2xl mx-auto"
+            className="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto"
           >
             The latest strategies, trends, and case studies driving digital growth.
           </motion.p>
@@ -41,7 +41,7 @@ export default function Blog() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: idx * 0.1 }}
-                className="group cursor-pointer bg-white/5 rounded-2xl border border-white/5 hover:border-accent-blue/30 transition-all overflow-hidden"
+                className="bg-white dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-3xl overflow-hidden hover:bg-gray-50 dark:hover:bg-white/10 transition-colors group cursor-pointer flex flex-col h-full shadow-sm dark:shadow-none"
               >
                 <div className="overflow-hidden aspect-video relative">
                   <img
@@ -54,15 +54,16 @@ export default function Blog() {
                   </div>
                 </div>
                 
-                <div className="p-8">
-                  <div className="flex items-center gap-2 text-gray-500 text-sm mb-4">
+                <div className="p-8 flex flex-col flex-grow">
+                  <div className="flex items-center gap-2 text-gray-500 text-sm mb-3">
                     <Calendar className="w-4 h-4" />
                     <span>{post.date}</span>
                   </div>
-                  <h3 className="text-2xl font-bold leading-tight mb-6 group-hover:text-white text-gray-200 transition-colors">
+                  <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4 group-hover:text-accent-lightBlue transition-colors group-hover:underline decoration-accent-blue/50 underline-offset-4 flex-grow">
                     {post.title}
                   </h3>
-                  <div className="flex items-center gap-2 text-accent-blue font-medium group-hover:gap-4 transition-all w-fit">
+
+                  <div className="flex items-center gap-2 text-accent-blue font-medium group-hover:gap-4 transition-all w-fit mt-auto">
                     <span>Read Full Article</span>
                     <ArrowRight className="w-4 h-4" />
                   </div>

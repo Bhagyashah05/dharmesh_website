@@ -26,7 +26,7 @@ export default function About() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="text-xl text-gray-400 max-w-2xl mx-auto"
+            className="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto"
           >
             A collective of digital pioneers dedicated to pushing the boundaries of what's possible in marketing and tech.
           </motion.p>
@@ -44,11 +44,11 @@ export default function About() {
             />
           </div>
           <div className="md:w-1/2">
-            <h2 className="text-3xl font-bold mb-6">Our Story</h2>
-            <p className="text-gray-400 mb-4 leading-relaxed">
+            <h2 className="text-3xl md:text-4xl font-bold mb-6 text-gray-900 dark:text-white">Our Story</h2>
+            <p className="text-gray-600 dark:text-gray-400 leading-relaxed mb-6">
               Founded in 2015, we recognized early on that the digital landscape was becoming fragmented. Brands needed a unified approach that combined cutting-edge technology with creative marketing strategies.
             </p>
-            <p className="text-gray-400 leading-relaxed">
+            <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
               Today, Growthrasta stands as an award-winning agency, helping Fortune 500 companies and agile startups alike achieve unprecedented growth through our proprietary data-driven frameworks.
             </p>
           </div>
@@ -57,27 +57,26 @@ export default function About() {
 
       {/* Team Section */}
       <section className="py-24">
-        <div className="container mx-auto px-6">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-4">Meet the Leadership</h2>
-            <p className="text-gray-400">The visionaries behind our success.</p>
-          </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="container mx-auto px-6 max-w-6xl">
+          <h2 className="text-4xl font-bold mb-16 text-center text-gray-900 dark:text-white">Meet the Leaders</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {team.map((member, idx) => (
               <motion.div 
-                key={idx}
+                key={member.name}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: idx * 0.1 }}
-                className="group text-center"
+                className="bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-3xl overflow-hidden group shadow-sm dark:shadow-none"
               >
                 <div className="overflow-hidden rounded-2xl aspect-[3/4] mb-4 relative border border-white/10">
                   <img src={member.image} alt={member.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
                   <div className="absolute inset-0 bg-dark/20 group-hover:bg-transparent transition-colors" />
                 </div>
-                <h3 className="text-xl font-bold">{member.name}</h3>
-                <p className="text-accent-blue">{member.role}</p>
+                <div className="p-8 pb-0">
+                  <h3 className="text-2xl font-bold mb-2 text-gray-900 dark:text-white">{member.name}</h3>
+                  <p className="text-accent-blue font-medium mb-4">{member.role}</p>
+                </div>
               </motion.div>
             ))}
           </div>

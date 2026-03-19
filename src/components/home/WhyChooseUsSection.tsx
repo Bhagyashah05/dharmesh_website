@@ -27,7 +27,7 @@ const reasons = [
 
 export default function WhyChooseUsSection() {
   return (
-    <section className="py-24 bg-[#080808] border-y border-white/5 relative">
+    <section className="py-24 bg-gray-50 dark:bg-[#050505] relative border-y border-gray-200 dark:border-white/5 transition-colors duration-300">
       <div className="container mx-auto px-6">
         <div className="flex flex-col lg:flex-row gap-16 items-center">
           
@@ -58,7 +58,7 @@ export default function WhyChooseUsSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.2 }}
-              className="text-gray-400 text-lg leading-relaxed mb-8 max-w-xl"
+              className="text-gray-600 dark:text-gray-400 text-lg leading-relaxed mb-8 max-w-xl"
             >
               Partnering with Growthrasta means gaining a dedicated team of digital experts committed to dominating your niche. We blend creative thinking with technical superiority.
             </motion.p>
@@ -95,8 +95,8 @@ export default function WhyChooseUsSection() {
                 <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-accent-blue to-accent-purple flex items-center justify-center mb-6">
                   <reason.icon className="w-6 h-6 text-white" />
                 </div>
-                <h3 className="text-xl font-bold mb-3">{reason.title}</h3>
-                <p className="text-gray-400 text-sm leading-relaxed">
+                <h4 className="text-xl font-bold text-gray-900 dark:text-white mb-2">{reason.title}</h4>
+                <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
                   {reason.description}
                 </p>
               </motion.div>

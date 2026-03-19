@@ -41,7 +41,7 @@ export default function PortfolioSection() {
   );
 
   return (
-    <section className="py-24 bg-dark">
+    <section className="py-24 bg-white dark:bg-dark transition-colors duration-300">
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
           <motion.span
@@ -67,20 +67,19 @@ export default function PortfolioSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
-            className="flex flex-wrap justify-center gap-4"
+            className="inline-flex flex-wrap justify-center gap-2 bg-gray-50 dark:bg-white/5 p-1.5 rounded-2xl md:rounded-full mb-12 border border-gray-200 dark:border-white/10 shadow-sm dark:shadow-none"
           >
-            {categories.map((cat) => (
+            {categories.map(category => (
               <button
-                key={cat}
-                onClick={() => setActiveCategory(cat)}
-                className={cn(
-                  "px-6 py-2 rounded-full border transition-all font-medium text-sm",
-                  activeCategory === cat
-                    ? "bg-accent-blue border-accent-blue text-white"
-                    : "bg-transparent border-white/10 text-gray-400 hover:border-white/30 hover:text-white"
-                )}
+                key={category}
+                onClick={() => setActiveCategory(category)}
+                className={`px-6 py-2 rounded-full text-sm font-medium transition-all ${
+                  activeCategory === category
+                    ? 'bg-accent-blue text-white shadow-md'
+                    : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-gray-200 dark:hover:bg-white/5'
+                }`}
               >
-                {cat}
+                {category}
               </button>
             ))}
           </motion.div>

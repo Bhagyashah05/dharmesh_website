@@ -28,8 +28,8 @@ export default function Contact() {
   };
 
   return (
-    <div className="bg-dark min-h-screen">
-      <section className="py-24 relative overflow-hidden bg-[#050505] border-b border-white/5">
+    <div className="bg-white dark:bg-dark min-h-screen transition-colors duration-300">
+      <section className="py-24 relative overflow-hidden bg-gray-50 dark:bg-[#050505] border-b border-gray-200 dark:border-white/5 transition-colors duration-300">
         <div className="container mx-auto px-6 relative z-10 text-center">
           <motion.h1 
             initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} 
@@ -39,7 +39,7 @@ export default function Contact() {
           </motion.h1>
           <motion.p 
             initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }}
-            className="text-xl text-gray-400 max-w-2xl mx-auto"
+            className="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto"
           >
             Ready to scale your business? Drop us a line and let's discuss your next big project.
           </motion.p>
@@ -54,15 +54,15 @@ export default function Contact() {
             <motion.div 
               initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}
             >
-              <h2 className="text-3xl font-bold mb-8">Get In Touch</h2>
+              <h2 className="text-3xl font-bold mb-8 text-gray-900 dark:text-white">Get In Touch</h2>
               <div className="space-y-8 mb-12">
                 <div className="flex items-start gap-4">
                   <div className="w-12 h-12 rounded-full bg-accent-blue/10 flex items-center justify-center flex-shrink-0">
                     <MapPin className="w-6 h-6 text-accent-lightBlue" />
                   </div>
                   <div>
-                    <h4 className="text-lg font-bold text-white mb-1">Headquarters</h4>
-                    <p className="text-gray-400 leading-relaxed">123 Digital Avenue, Suite 400<br/>Tech District, NY 10001</p>
+                    <h4 className="text-lg font-bold text-gray-900 dark:text-white mb-1">Headquarters</h4>
+                    <p className="text-gray-600 dark:text-gray-400 leading-relaxed">Ahmedabad, Gujarat<br/>India</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-4">
@@ -70,8 +70,8 @@ export default function Contact() {
                     <Phone className="w-6 h-6 text-accent-lightBlue" />
                   </div>
                   <div>
-                    <h4 className="text-lg font-bold text-white mb-1">Phone</h4>
-                    <p className="text-gray-400 leading-relaxed">96017 99398<br/>Mon-Fri, 9am - 6pm EST</p>
+                    <h4 className="text-lg font-bold text-gray-900 dark:text-white mb-1">Phone</h4>
+                    <p className="text-gray-600 dark:text-gray-400 leading-relaxed">96017 99398<br/>Mon-Fri, 9am - 6pm EST</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-4">
@@ -79,14 +79,14 @@ export default function Contact() {
                     <Mail className="w-6 h-6 text-accent-lightBlue" />
                   </div>
                   <div>
-                    <h4 className="text-lg font-bold text-white mb-1">Email</h4>
-                    <p className="text-gray-400 leading-relaxed">hello@growthrasta.com<br/>support@growthrasta.com</p>
+                    <h4 className="text-lg font-bold text-gray-900 dark:text-white mb-1">Email</h4>
+                    <p className="text-gray-600 dark:text-gray-400 leading-relaxed">hello@growthrasta.com<br/>support@growthrasta.com</p>
                   </div>
                 </div>
               </div>
 
               {/* Map Placeholder */}
-              <div className="w-full h-64 bg-white/5 rounded-2xl border border-white/10 flex items-center justify-center overflow-hidden relative group">
+              <div className="w-full h-64 bg-gray-50 dark:bg-white/5 rounded-2xl border border-gray-200 dark:border-white/10 flex items-center justify-center overflow-hidden relative group mt-12 shadow-sm dark:shadow-none">
                 <div className="absolute inset-0 bg-accent-blue/5 group-hover:bg-transparent transition-colors z-10" />
                 <span className="text-gray-500 font-medium z-0">Interactive Map Integration</span>
               </div>
@@ -95,12 +95,12 @@ export default function Contact() {
             {/* Contact Form */}
             <motion.div 
               initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}
-              className="bg-white/5 p-8 md:p-10 rounded-3xl border border-white/10"
+              className="bg-white dark:bg-white/5 p-8 md:p-10 rounded-3xl border border-gray-200 dark:border-white/10 shadow-sm dark:shadow-none"
             >
-              <h3 className="text-2xl font-bold mb-8">Send a Message</h3>
+              <h3 className="text-2xl font-bold mb-8 text-gray-900 dark:text-white">Send a Message</h3>
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-gray-400 mb-2">Full Name</label>
+                  <label htmlFor="name" className="block text-sm font-medium text-gray-600 dark:text-gray-400 mb-2">Full Name</label>
                   <input
                     type="text"
                     id="name"
@@ -108,13 +108,13 @@ export default function Contact() {
                     required
                     value={formData.name}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 bg-dark border border-white/10 rounded-xl focus:outline-none focus:border-accent-blue focus:ring-1 focus:ring-accent-blue transition-colors text-white"
+                    className="w-full px-4 py-3 bg-gray-50 dark:bg-dark border border-gray-200 dark:border-white/10 rounded-xl focus:outline-none focus:border-accent-blue focus:ring-1 focus:ring-accent-blue transition-colors text-gray-900 dark:text-white"
                     placeholder="John Doe"
                   />
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
-                    <label htmlFor="email" className="block text-sm font-medium text-gray-400 mb-2">Email Address</label>
+                    <label htmlFor="email" className="block text-sm font-medium text-gray-600 dark:text-gray-400 mb-2">Email Address</label>
                     <input
                       type="email"
                       id="email"
@@ -122,25 +122,25 @@ export default function Contact() {
                       required
                       value={formData.email}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 bg-dark border border-white/10 rounded-xl focus:outline-none focus:border-accent-blue focus:ring-1 focus:ring-accent-blue transition-colors text-white"
+                      className="w-full px-4 py-3 bg-gray-50 dark:bg-dark border border-gray-200 dark:border-white/10 rounded-xl focus:outline-none focus:border-accent-blue focus:ring-1 focus:ring-accent-blue transition-colors text-gray-900 dark:text-white"
                       placeholder="john@example.com"
                     />
                   </div>
                   <div>
-                    <label htmlFor="company" className="block text-sm font-medium text-gray-400 mb-2">Company (Optional)</label>
+                    <label htmlFor="company" className="block text-sm font-medium text-gray-600 dark:text-gray-400 mb-2">Company (Optional)</label>
                     <input
                       type="text"
                       id="company"
                       name="company"
                       value={formData.company}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 bg-dark border border-white/10 rounded-xl focus:outline-none focus:border-accent-blue focus:ring-1 focus:ring-accent-blue transition-colors text-white"
+                      className="w-full px-4 py-3 bg-gray-50 dark:bg-dark border border-gray-200 dark:border-white/10 rounded-xl focus:outline-none focus:border-accent-blue focus:ring-1 focus:ring-accent-blue transition-colors text-gray-900 dark:text-white"
                       placeholder="Your Company"
                     />
                   </div>
                 </div>
                 <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-gray-400 mb-2">Project Details</label>
+                  <label htmlFor="message" className="block text-sm font-medium text-gray-600 dark:text-gray-400 mb-2">Project Details</label>
                   <textarea
                     id="message"
                     name="message"
@@ -148,7 +148,7 @@ export default function Contact() {
                     rows={5}
                     value={formData.message}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 bg-dark border border-white/10 rounded-xl focus:outline-none focus:border-accent-blue focus:ring-1 focus:ring-accent-blue transition-colors text-white resize-none"
+                    className="w-full px-4 py-3 bg-gray-50 dark:bg-dark border border-gray-200 dark:border-white/10 rounded-xl focus:outline-none focus:border-accent-blue focus:ring-1 focus:ring-accent-blue transition-colors text-gray-900 dark:text-white resize-none"
                     placeholder="Tell us about your goals..."
                   ></textarea>
                 </div>

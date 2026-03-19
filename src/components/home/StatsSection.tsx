@@ -43,7 +43,7 @@ function Counter({ from, to, duration = 2 }: { from: number, to: number, duratio
 
 export default function StatsSection() {
   return (
-    <section className="py-20 relative bg-[#050505] border-y border-white/5">
+    <section className="py-20 relative bg-gray-50 dark:bg-[#050505] border-y border-gray-200 dark:border-white/5 transition-colors duration-300">
       <div className="container mx-auto px-6">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
           {statsData.map((stat, idx) => (
@@ -55,11 +55,11 @@ export default function StatsSection() {
               transition={{ duration: 0.5, delay: idx * 0.1 }}
               className="text-center"
             >
-              <div className="text-4xl md:text-6xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-500 mb-2">
+              <div className="text-4xl md:text-6xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-gray-900 to-gray-500 dark:from-white dark:to-gray-500 mb-2">
                 <Counter from={0} to={stat.value} />
                 <span className="text-accent-blue">{stat.suffix}</span>
               </div>
-              <p className="text-gray-400 font-medium tracking-wide text-sm md:text-base uppercase">
+              <p className="text-gray-600 dark:text-gray-400 font-medium tracking-wide text-sm md:text-base uppercase">
                 {stat.label}
               </p>
             </motion.div>
