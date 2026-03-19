@@ -49,7 +49,7 @@ export default function Navbar() {
         {/* Logo */}
         <Link to="/" className="flex items-center space-x-2 z-50">
           <img src="/image.png" alt="Growthrasta" className="h-10 w-auto" />
-          <span className="text-xl font-bold tracking-tight">GROWTH<span className="text-accent-blue">RASTA</span></span>
+          <span className="text-xl font-bold tracking-tight text-gray-900 dark:text-white">GROWTH<span className="text-accent-blue">RASTA</span></span>
         </Link>
 
         {/* Desktop Nav */}
