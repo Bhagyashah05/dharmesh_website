@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, Rocket } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { clsx, type ClassValue } from 'clsx';
 import { twMerge } from 'tailwind-merge';
@@ -46,7 +46,7 @@ export default function Navbar() {
       <div className="container mx-auto px-6 uppercase tracking-wider text-sm flex items-center justify-between">
         {/* Logo */}
         <Link to="/" className="flex items-center space-x-2 z-50">
-          <Rocket className="w-8 h-8 text-accent-blue" />
+          <img src="/image.png" alt="Growthrasta" className="h-10 w-auto" />
           <span className="text-xl font-bold tracking-tight">GROWTH<span className="text-accent-blue">RASTA</span></span>
         </Link>
 

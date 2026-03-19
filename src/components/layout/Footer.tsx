@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Rocket, Instagram, Facebook } from 'lucide-react';
+import { Instagram, Facebook } from 'lucide-react';
 
 export default function Footer() {
   return (
@@ -9,7 +9,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
           <div className="col-span-1 md:col-span-1">
             <Link to="/" className="flex items-center space-x-2 mb-6">
-              <Rocket className="w-8 h-8 text-accent-blue" />
+              <img src="/image.png" alt="Growthrasta" className="h-10 w-auto" />
               <span className="text-xl font-bold tracking-tight text-white">GROWTH<span className="text-accent-blue">RASTA</span></span>
             </Link>
             <p className="text-gray-400 leading-relaxed mb-6">
