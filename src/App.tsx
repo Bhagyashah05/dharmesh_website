@@ -12,7 +12,7 @@ const Contact = lazy(() => import('./pages/Contact'));
 
 function LoadingScreen() {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-dark text-white">
+    <div className="min-h-screen flex items-center justify-center bg-white dark:bg-dark text-gray-900 dark:text-white transition-colors duration-300">
       <div className="w-16 h-16 border-4 border-accent-blue border-t-transparent rounded-full animate-spin"></div>
     </div>
   );

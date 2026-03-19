@@ -58,7 +58,7 @@ export default function ServicesSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1 }}
-              className="text-4xl md:text-5xl font-bold"
+              className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white"
             >
               Comprehensive Digital<br />Solutions for Growth
             </motion.h2>
@@ -72,7 +72,7 @@ export default function ServicesSection() {
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
           >
-            <Link to="/services" className="group flex items-center gap-2 text-white hover:text-accent-blue transition-colors font-medium">
+            <Link to="/services" className="group flex items-center gap-2 text-gray-900 dark:text-white hover:text-accent-blue transition-colors font-medium">
               View All Services
               <ArrowRight className="w-5 h-5 group-hover:translate-x-2 transition-transform" />
             </Link>

@@ -57,7 +57,7 @@ export default function PortfolioSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-4xl md:text-5xl font-bold mb-8"
+            className="text-4xl md:text-5xl font-bold mb-8 text-gray-900 dark:text-white"
           >
             We Build Digital Masterpieces
           </motion.h2>
@@ -125,7 +125,7 @@ export default function PortfolioSection() {
         <div className="mt-16 text-center">
           <Link
             to="/portfolio"
-            className="inline-flex items-center gap-2 text-white font-medium hover:text-accent-lightBlue transition-colors group"
+            className="inline-flex items-center gap-2 text-gray-900 dark:text-white font-medium hover:text-accent-lightBlue transition-colors group"
           >
             Explore Full Portfolio
             <ArrowUpRight className="w-5 h-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />

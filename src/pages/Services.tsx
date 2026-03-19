@@ -83,7 +83,7 @@ export default function Services() {
                   {service.description}
                 </p>
                 <div>
-                  <h4 className="font-bold text-white mb-4 uppercase tracking-wider text-sm">Key Features:</h4>
+                  <h4 className="font-bold text-gray-900 dark:text-white mb-4 uppercase tracking-wider text-sm">Key Features:</h4>
                   <ul className="space-y-2">
                     {service.features.map((feature, fIdx) => (
                       <li key={feature} className="flex items-center gap-3 text-gray-700 dark:text-gray-300">

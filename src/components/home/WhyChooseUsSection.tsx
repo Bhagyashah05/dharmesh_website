@@ -46,7 +46,7 @@ export default function WhyChooseUsSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1 }}
-              className="text-4xl md:text-5xl font-bold mb-6"
+              className="text-4xl md:text-5xl font-bold mb-6 text-gray-900 dark:text-white"
             >
               We Don't Just Market.<br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent-blue to-accent-purple">
@@ -69,12 +69,12 @@ export default function WhyChooseUsSection() {
               viewport={{ once: true }}
               transition={{ delay: 0.3 }}
             >
-              <div className="flex items-center gap-4 bg-white/5 p-4 rounded-xl border border-white/10 w-fit">
+              <div className="flex items-center gap-4 bg-gray-50 dark:bg-white/5 p-4 rounded-xl border border-gray-200 dark:border-white/10 w-fit shadow-sm dark:shadow-none">
                 <div className="w-12 h-12 rounded-full bg-accent-blue/20 flex items-center justify-center">
                   <span className="text-accent-blue font-bold text-xl">100%</span>
                 </div>
                 <div>
-                  <p className="text-white font-bold">Client Satisfaction</p>
+                  <p className="text-gray-900 dark:text-white font-bold">Client Satisfaction</p>
                   <p className="text-xs text-gray-500 uppercase tracking-widest">Guaranteed</p>
                 </div>
               </div>
@@ -90,7 +90,7 @@ export default function WhyChooseUsSection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: idx * 0.1 + 0.2 }}
-                className="bg-dark p-8 rounded-2xl border border-white/5 hover:border-accent-blue/50 hover:-translate-y-2 transition-all duration-300"
+                className="bg-white dark:bg-dark p-8 rounded-2xl border border-gray-200 dark:border-white/5 hover:border-accent-blue/50 dark:hover:border-accent-blue/50 hover:-translate-y-2 transition-all duration-300 shadow-sm dark:shadow-none"
               >
                 <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-accent-blue to-accent-purple flex items-center justify-center mb-6">
                   <reason.icon className="w-6 h-6 text-white" />

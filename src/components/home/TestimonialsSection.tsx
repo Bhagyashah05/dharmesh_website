@@ -36,7 +36,7 @@ export default function TestimonialsSection() {
       
       <div className="container mx-auto px-6 relative z-10">
         <div className="max-w-4xl mx-auto text-center">
-          <Quote className="w-16 h-16 mx-auto text-white/10 mb-8" />
+          <Quote className="w-16 h-16 mx-auto text-gray-900/5 dark:text-white/10 mb-8" />
           
           <div className="relative min-h-[300px] md:min-h-[200px] mt-12">
             <AnimatePresence mode="wait">
