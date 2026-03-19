@@ -60,7 +60,7 @@ export default function WhyChooseUsSection() {
               transition={{ delay: 0.2 }}
               className="text-gray-400 text-lg leading-relaxed mb-8 max-w-xl"
             >
-              Partnering with MediaF5 Pro means gaining a dedicated team of digital experts committed to dominating your niche. We blend creative thinking with technical superiority.
+              Partnering with Growthrasta means gaining a dedicated team of digital experts committed to dominating your niche. We blend creative thinking with technical superiority.
             </motion.p>
             
             <motion.div

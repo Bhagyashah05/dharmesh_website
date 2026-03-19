@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Search, Share2, PenTool, Layout, Mail, ArrowRight } from 'lucide-react';
+import { Search, Share2, PenTool, Layout, Mail, ArrowRight, MousePointerClick } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const services = [
@@ -28,6 +28,11 @@ const services = [
     icon: Mail,
     title: 'Email Marketing',
     description: 'Personalized automated campaigns that nurture leads and drive revenue.',
+  },
+  {
+    icon: MousePointerClick,
+    title: 'Google Ads',
+    description: 'High-performing PPC campaigns that deliver instant targeted traffic and maximize return on ad spend.',
   },
 ];
 

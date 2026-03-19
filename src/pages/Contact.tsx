@@ -71,7 +71,7 @@ export default function Contact() {
                   </div>
                   <div>
                     <h4 className="text-lg font-bold text-white mb-1">Phone</h4>
-                    <p className="text-gray-400 leading-relaxed">+1 (555) 123-4567<br/>Mon-Fri, 9am - 6pm EST</p>
+                    <p className="text-gray-400 leading-relaxed">96017 99398<br/>Mon-Fri, 9am - 6pm EST</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-4">
@@ -80,7 +80,7 @@ export default function Contact() {
                   </div>
                   <div>
                     <h4 className="text-lg font-bold text-white mb-1">Email</h4>
-                    <p className="text-gray-400 leading-relaxed">hello@mediaf5pro.com<br/>support@mediaf5pro.com</p>
+                    <p className="text-gray-400 leading-relaxed">hello@growthrasta.com<br/>support@growthrasta.com</p>
                   </div>
                 </div>
               </div>

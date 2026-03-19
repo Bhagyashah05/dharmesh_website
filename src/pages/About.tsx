@@ -20,7 +20,7 @@ export default function About() {
             animate={{ opacity: 1, y: 0 }}
             className="text-5xl md:text-7xl font-extrabold mb-6"
           >
-            We Are <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent-blue to-accent-purple">MediaF5 Pro</span>
+            We Are <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent-blue to-accent-purple">Growthrasta</span>
           </motion.h1>
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
@@ -49,7 +49,7 @@ export default function About() {
               Founded in 2015, we recognized early on that the digital landscape was becoming fragmented. Brands needed a unified approach that combined cutting-edge technology with creative marketing strategies.
             </p>
             <p className="text-gray-400 leading-relaxed">
-              Today, MediaF5 Pro stands as an award-winning agency, helping Fortune 500 companies and agile startups alike achieve unprecedented growth through our proprietary data-driven frameworks.
+              Today, Growthrasta stands as an award-winning agency, helping Fortune 500 companies and agile startups alike achieve unprecedented growth through our proprietary data-driven frameworks.
             </p>
           </div>
         </div>

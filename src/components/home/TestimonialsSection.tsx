@@ -4,7 +4,7 @@ import { ChevronLeft, ChevronRight, Quote } from 'lucide-react';
 
 const testimonials = [
   {
-    text: "MediaF5 Pro completely transformed our online presence. Our organic traffic increased by 300% in just 6 months, and our conversion rate doubled.",
+    text: "Growthrasta completely transformed our online presence. Our organic traffic increased by 300% in just 6 months, and our conversion rate doubled.",
     name: "Sarah Jenkins",
     role: "CMO, TechNova Solutions",
     image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=200",

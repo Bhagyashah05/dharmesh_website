@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Search, Share2, PenTool, Layout, Mail, PieChart } from 'lucide-react';
+import { Search, Share2, PenTool, Layout, Mail, PieChart, MousePointerClick } from 'lucide-react';
 
 const detailedServices = [
   {
@@ -26,6 +26,12 @@ const detailedServices = [
     title: 'Data & Analytics',
     description: 'Stop guessing. We implement advanced tracking and custom dashboards so every decision is backed by hard, actionable data.',
     features: ['Google Analytics 4', 'Conversion Tracking', 'Custom Dashboards', 'A/B Testing']
+  },
+  {
+    icon: MousePointerClick,
+    title: 'Google Ads & PPC',
+    description: 'Data-driven pay-per-click advertising that instantly connects your brand with high-intent searchers.',
+    features: ['Search Ads', 'Display Network', 'Retargeting Campaigns', 'Conversion Tracking']
   }
 ];
 

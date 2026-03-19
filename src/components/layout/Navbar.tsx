@@ -47,7 +47,7 @@ export default function Navbar() {
         {/* Logo */}
         <Link to="/" className="flex items-center space-x-2 z-50">
           <Rocket className="w-8 h-8 text-accent-blue" />
-          <span className="text-xl font-bold tracking-tight">MEDIAF5 <span className="text-accent-blue">PRO</span></span>
+          <span className="text-xl font-bold tracking-tight">GROWTH<span className="text-accent-blue">RASTA</span></span>
         </Link>
 
         {/* Desktop Nav */}
