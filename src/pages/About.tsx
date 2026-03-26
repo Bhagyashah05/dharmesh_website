@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
+import { getPageBySlug } from '../lib/wp-api';
 
 const team = [
   { name: 'Marcus Johnson', role: 'CEO & Founder', image: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80&w=400' },
@@ -9,6 +10,12 @@ const team = [
 ];
 
 export default function About() {
+  const [pageData, setPageData] = useState<{ title: string; content: string } | null>(null);
+
+  useEffect(() => {
+    getPageBySlug('about').then(setPageData);
+  }, []);
+
   return (
     <div className="bg-dark min-h-screen">
       {/* Header */}
@@ -44,13 +51,27 @@ export default function About() {
             />
           </div>
           <div className="md:w-1/2">
-            <h2 className="text-3xl md:text-4xl font-bold mb-6 text-gray-900 dark:text-white">Our Story</h2>
-            <p className="text-gray-600 dark:text-gray-400 leading-relaxed mb-6">
-              Founded in 2015, we recognized early on that the digital landscape was becoming fragmented. Brands needed a unified approach that combined cutting-edge technology with creative marketing strategies.
-            </p>
-            <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
-              Today, Growthrasta stands as an award-winning agency, helping Fortune 500 companies and agile startups alike achieve unprecedented growth through our proprietary data-driven frameworks.
-            </p>
+            <h2 
+              className="text-3xl md:text-4xl font-bold mb-6 text-gray-900 dark:text-white"
+              dangerouslySetInnerHTML={{ __html: pageData?.title || 'Our Story' }}
+            />
+            {pageData ? (
+              <div 
+                className="prose prose-sm dark:prose-invert max-w-none 
+                prose-headings:text-gray-900 dark:prose-headings:text-white prose-headings:font-bold
+                prose-p:text-gray-600 dark:prose-p:text-gray-400 prose-p:leading-relaxed prose-p:mb-6"
+                dangerouslySetInnerHTML={{ __html: pageData.content }}
+              />
+            ) : (
+              <>
+                <p className="text-gray-600 dark:text-gray-400 leading-relaxed mb-6">
+                  Founded in 2015, we recognized early on that the digital landscape was becoming fragmented. Brands needed a unified approach that combined cutting-edge technology with creative marketing strategies.
+                </p>
+                <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
+                  Today, Growthrasta stands as an award-winning agency, helping Fortune 500 companies and agile startups alike achieve unprecedented growth through our proprietary data-driven frameworks.
+                </p>
+              </>
+            )}
           </div>
         </div>
       </section>

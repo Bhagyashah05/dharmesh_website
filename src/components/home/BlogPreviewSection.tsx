@@ -1,33 +1,18 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight, Calendar } from 'lucide-react';
 import { Link } from 'react-router-dom';
-
-const posts = [
-  {
-    id: 1,
-    title: 'The Future of AI in Digital Marketing Strategies',
-    date: 'March 15, 2026',
-    category: 'Innovation',
-    image: 'https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&q=80&w=800',
-  },
-  {
-    id: 2,
-    title: '5 On-Page SEO Tactics That Actually Move the Needle',
-    date: 'March 02, 2026',
-    category: 'SEO',
-    image: 'https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?auto=format&fit=crop&q=80&w=800',
-  },
-  {
-    id: 3,
-    title: 'Maximizing ROI Through Data-Driven Content Strategy',
-    date: 'February 24, 2026',
-    category: 'Content',
-    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800',
-  },
-];
+import { getPosts, FormattedPost } from '../../lib/wp-api';
 
 export default function BlogPreviewSection() {
+  const [posts, setPosts] = useState<FormattedPost[]>([]);
+
+  useEffect(() => {
+    // Only fetch 3 posts for the preview section
+    getPosts(1, 3).then((data) => {
+      setPosts(data.posts);
+    });
+  }, []);
   return (
     <section className="py-24 bg-gray-50 dark:bg-[#050505] relative border-y border-gray-200 dark:border-white/5 transition-colors duration-300">
       <div className="container mx-auto px-6">
@@ -74,31 +59,33 @@ export default function BlogPreviewSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: idx * 0.1 }}
-              className="bg-white dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-3xl overflow-hidden hover:bg-gray-100 dark:hover:bg-white/10 transition-colors group cursor-pointer flex flex-col h-full shadow-sm dark:shadow-none"
             >
-              <div className="overflow-hidden aspect-video mb-6 relative">
-                <img
-                  src={post.image}
-                  alt={post.title}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                />
-                <div className="absolute top-4 left-4 bg-white/10 backdrop-blur-md px-3 py-1 rounded-full text-xs font-bold text-white uppercase tracking-wider border border-white/20">
-                  {post.category}
+              <Link to={`/blog/${post.slug}`} className="bg-white dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-3xl overflow-hidden hover:bg-gray-100 dark:hover:bg-white/10 transition-colors group cursor-pointer flex flex-col h-full shadow-sm dark:shadow-none block">
+                <div className="overflow-hidden aspect-video mb-6 relative">
+                  <img
+                    src={post.image}
+                    alt={post.title}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <div className="absolute top-4 left-4 bg-white/10 backdrop-blur-md px-3 py-1 rounded-full text-xs font-bold text-white uppercase tracking-wider border border-white/20">
+                    {post.category}
+                  </div>
                 </div>
-              </div>
-              <div className="p-6 flex flex-col flex-grow">
-                <div className="flex items-center gap-2 text-gray-500 text-sm mb-3">
-                  <Calendar className="w-4 h-4" />
-                  <span>{post.date}</span>
+                <div className="p-6 flex flex-col flex-grow">
+                  <div className="flex items-center gap-2 text-gray-500 text-sm mb-3">
+                    <Calendar className="w-4 h-4" />
+                    <span>{post.date}</span>
+                  </div>
+                  <h3 
+                    className="text-2xl font-bold leading-tight mb-4 group-hover:text-accent-blue transition-colors text-gray-900 dark:text-white flex-grow"
+                    dangerouslySetInnerHTML={{ __html: post.title }}
+                  />
+                  <div className="flex items-center gap-2 text-accent-lightBlue font-medium group-hover:gap-4 transition-all w-fit mt-auto">
+                    <span>Read Article</span>
+                    <ArrowRight className="w-4 h-4" />
+                  </div>
                 </div>
-                <h3 className="text-2xl font-bold leading-tight mb-4 group-hover:text-accent-blue transition-colors text-gray-900 dark:text-white flex-grow">
-                  {post.title}
-                </h3>
-                <div className="flex items-center gap-2 text-accent-lightBlue font-medium group-hover:gap-4 transition-all w-fit">
-                  <span>Read Article</span>
-                  <ArrowRight className="w-4 h-4" />
-                </div>
-              </div>
+              </Link>
             </motion.div>
           ))}
         </div>

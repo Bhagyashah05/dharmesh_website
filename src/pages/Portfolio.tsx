@@ -1,23 +1,24 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowUpRight } from 'lucide-react';
 import { cn } from '../components/layout/Navbar';
-
-const categories = ['All', 'Web Design', 'Marketing', 'Branding', 'SEO'];
-
-const allProjects = [
-  ...Array(8).fill(null).map((_, i) => ({
-    id: i,
-    title: `Project Title ${i + 1}`,
-    category: categories[(i % 4) + 1],
-    image: `https://images.unsplash.com/photo-${1500000000000 + i}?auto=format&fit=crop&q=80&w=800`
-  }))
-];
+import { getPostsByCategory, FormattedPost } from '../lib/wp-api';
 
 export default function Portfolio() {
   const [activeCategory, setActiveCategory] = useState('All');
+  const [projects, setProjects] = useState<FormattedPost[]>([]);
+  const [loading, setLoading] = useState(true);
 
-  const filteredProjects = allProjects.filter(
+  useEffect(() => {
+    getPostsByCategory('portfolio', 20).then(data => {
+      setProjects(data);
+      setLoading(false);
+    });
+  }, []);
+
+  const categories = ['All', ...Array.from(new Set(projects.map(p => p.category)))].filter(Boolean);
+
+  const filteredProjects = projects.filter(
     (p) => activeCategory === 'All' || p.category === activeCategory
   );
 
@@ -65,38 +66,49 @@ export default function Portfolio() {
         <div className="container mx-auto px-6">
           <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
             <AnimatePresence>
-              {filteredProjects.map((project) => (
-                <motion.div
-                  key={project.id}
-                  layout
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.9 }}
-                  transition={{ duration: 0.3 }}
-                  className="group relative rounded-3xl overflow-hidden aspect-[4/3] bg-white/5 cursor-pointer border border-white/5"
-                >
-                  <img
-                    src={`https://source.unsplash.com/random/800x600?${project.category.toLowerCase().replace(' ', '')}&sig=${project.id}`}
-                    alt={project.title}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-70 group-hover:opacity-100"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-dark/90 via-dark/20 to-transparent pointer-events-none" />
-                  
-                  <div className="absolute bottom-0 left-0 p-8 w-full flex justify-between items-end">
-                    <div>
-                      <span className="text-accent-lightBlue font-medium tracking-wide text-sm mb-2 block uppercase">
-                        {project.category}
-                      </span>
-                      <h3 className="text-3xl font-bold text-white group-hover:text-accent-blue transition-colors">
-                        {project.title}
-                      </h3>
+              {loading ? (
+                <div className="col-span-full flex justify-center py-24">
+                  <div className="w-12 h-12 border-4 border-accent-blue border-t-transparent rounded-full animate-spin"></div>
+                </div>
+              ) : projects.length === 0 ? (
+                <div className="col-span-full text-center py-24 text-gray-500">
+                  No portfolio items found. Add some posts in the "Portfolio" category in WordPress!
+                </div>
+              ) : (
+                filteredProjects.map((project) => (
+                  <motion.div
+                    key={project.id}
+                    layout
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.9 }}
+                    transition={{ duration: 0.3 }}
+                    className="group relative rounded-3xl overflow-hidden aspect-[4/3] bg-white/5 cursor-pointer border border-white/5"
+                  >
+                    <img
+                      src={project.image}
+                      alt={project.title}
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-70 group-hover:opacity-100"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-dark/90 via-dark/20 to-transparent pointer-events-none" />
+                    
+                    <div className="absolute bottom-0 left-0 p-8 w-full flex justify-between items-end">
+                      <div>
+                        <span className="text-accent-lightBlue font-medium tracking-wide text-sm mb-2 block uppercase">
+                          {project.category}
+                        </span>
+                        <h3 
+                          className="text-3xl font-bold text-white group-hover:text-accent-blue transition-colors"
+                          dangerouslySetInnerHTML={{ __html: project.title }}
+                        />
+                      </div>
+                      <div className="w-14 h-14 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300">
+                        <ArrowUpRight className="w-6 h-6" />
+                      </div>
                     </div>
-                    <div className="w-14 h-14 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300">
-                      <ArrowUpRight className="w-6 h-6" />
-                    </div>
-                  </div>
-                </motion.div>
-              ))}
+                  </motion.div>
+                ))
+              )}
             </AnimatePresence>
           </motion.div>
         </div>

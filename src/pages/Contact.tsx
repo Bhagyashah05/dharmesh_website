@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { MapPin, Phone, Mail, Send } from 'lucide-react';
+import { getPageBySlug } from '../lib/wp-api';
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -11,6 +12,11 @@ export default function Contact() {
   });
   
   const [status, setStatus] = useState<'idle' | 'submitting' | 'success'>('idle');
+  const [pageData, setPageData] = useState<{ title: string; content: string } | null>(null);
+
+  useEffect(() => {
+    getPageBySlug('contact').then(setPageData);
+  }, []);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -34,15 +40,13 @@ export default function Contact() {
           <motion.h1 
             initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} 
             className="text-5xl md:text-7xl font-extrabold mb-6"
-          >
-            Let's Build <span className="text-accent-blue">Together</span>
-          </motion.h1>
-          <motion.p 
+            dangerouslySetInnerHTML={{ __html: pageData?.title || `Let's Build <span class="text-accent-blue">Together</span>` }}
+          />
+          <motion.div 
             initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }}
-            className="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto"
-          >
-            Ready to scale your business? Drop us a line and let's discuss your next big project.
-          </motion.p>
+            className="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto prose prose-p:text-gray-600 dark:prose-p:text-gray-400"
+            dangerouslySetInnerHTML={{ __html: pageData ? pageData.content : '<p>Ready to scale your business? Drop us a line and let\'s discuss your next big project.</p>' }}
+          />
         </div>
       </section>
 

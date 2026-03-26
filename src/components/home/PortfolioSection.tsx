@@ -1,40 +1,23 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowUpRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { cn } from '../layout/Navbar';
-
-const categories = ['All', 'Branding', 'Development', 'Marketing'];
-
-const projects = [
-  {
-    id: 1,
-    title: 'FinTech App Redesign',
-    category: 'Development',
-    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800',
-  },
-  {
-    id: 2,
-    title: 'Global Organic Campaign',
-    category: 'Marketing',
-    image: 'https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&q=80&w=800',
-  },
-  {
-    id: 3,
-    title: 'Luxury Real Estate',
-    category: 'Branding',
-    image: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800',
-  },
-  {
-    id: 4,
-    title: 'E-commerce Conversion Rate',
-    category: 'Marketing',
-    image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&q=80&w=800',
-  },
-];
+import { getPostsByCategory, FormattedPost } from '../../lib/wp-api';
 
 export default function PortfolioSection() {
   const [activeCategory, setActiveCategory] = useState('All');
+  const [projects, setProjects] = useState<FormattedPost[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    getPostsByCategory('portfolio', 6).then(data => {
+      setProjects(data);
+      setLoading(false);
+    });
+  }, []);
+
+  const categories = ['All', ...Array.from(new Set(projects.map(p => p.category)))].filter(Boolean);
 
   const filteredProjects = projects.filter(
     (p) => activeCategory === 'All' || p.category === activeCategory
@@ -87,38 +70,49 @@ export default function PortfolioSection() {
 
         <motion.div layout className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <AnimatePresence>
-            {filteredProjects.map((project) => (
-              <motion.div
-                key={project.id}
-                layout
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.9 }}
-                transition={{ duration: 0.3 }}
-                className="group relative rounded-2xl overflow-hidden aspect-[4/3] bg-white/5 cursor-pointer"
-              >
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-70 group-hover:opacity-100"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-dark/90 via-dark/40 to-transparent pointer-events-none" />
-                
-                <div className="absolute bottom-0 left-0 p-8 w-full flex justify-between items-end">
-                  <div>
-                    <span className="text-accent-lightBlue font-medium tracking-wide text-sm mb-2 block">
-                      {project.category}
-                    </span>
-                    <h3 className="text-2xl font-bold text-white group-hover:text-accent-blue transition-colors">
-                      {project.title}
-                    </h3>
+            {loading ? (
+              <div className="col-span-full flex justify-center py-24">
+                <div className="w-12 h-12 border-4 border-accent-blue border-t-transparent rounded-full animate-spin"></div>
+              </div>
+            ) : projects.length === 0 ? (
+              <div className="col-span-full text-center py-24 text-gray-500">
+                No portfolio items found. Add some posts in the "Portfolio" category in WordPress!
+              </div>
+            ) : (
+              filteredProjects.map((project) => (
+                <motion.div
+                  key={project.id}
+                  layout
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.9 }}
+                  transition={{ duration: 0.3 }}
+                  className="group relative rounded-2xl overflow-hidden aspect-[4/3] bg-white/5 cursor-pointer"
+                >
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-70 group-hover:opacity-100"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-dark/90 via-dark/40 to-transparent pointer-events-none" />
+                  
+                  <div className="absolute bottom-0 left-0 p-8 w-full flex justify-between items-end">
+                    <div>
+                      <span className="text-accent-lightBlue font-medium tracking-wide text-sm mb-2 block">
+                        {project.category}
+                      </span>
+                      <h3 
+                        className="text-2xl font-bold text-white group-hover:text-accent-blue transition-colors"
+                        dangerouslySetInnerHTML={{ __html: project.title }}
+                      />
+                    </div>
+                    <div className="w-12 h-12 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300">
+                      <ArrowUpRight className="w-6 h-6" />
+                    </div>
                   </div>
-                  <div className="w-12 h-12 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300">
-                    <ArrowUpRight className="w-6 h-6" />
-                  </div>
-                </div>
-              </motion.div>
-            ))}
+                </motion.div>
+              ))
+            )}
           </AnimatePresence>
         </motion.div>
 
