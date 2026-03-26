@@ -49,11 +49,23 @@ export function formatWPPost(post: any): FormattedPost {
 }
 
 /**
- * Fetch latest blog posts from WordPress
+ * Fetch latest blog posts from WordPress (strictly from 'blog' category)
  */
 export async function getPosts(page = 1, perPage = 10): Promise<{ posts: FormattedPost[], totalPages: number }> {
   try {
-    const response = await fetch(`${WP_API_URL}/wp-json/wp/v2/posts?_embed&page=${page}&per_page=${perPage}`);
+    // 1. Get the 'blog' category ID dynamically
+    const catResponse = await fetch(`${WP_API_URL}/wp-json/wp/v2/categories?slug=blog`);
+    if (!catResponse.ok) throw new Error('Failed to fetch blog category');
+    const categories = await catResponse.json();
+    
+    let url = `${WP_API_URL}/wp-json/wp/v2/posts?_embed&page=${page}&per_page=${perPage}`;
+    
+    // Only fetch posts from this category if it exists
+    if (categories.length > 0) {
+      url += `&categories=${categories[0].id}`;
+    }
+
+    const response = await fetch(url);
     if (!response.ok) throw new Error('Failed to fetch posts');
     
     const totalPages = response.headers.get('X-WP-TotalPages');

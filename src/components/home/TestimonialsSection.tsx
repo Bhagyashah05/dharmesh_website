@@ -4,22 +4,22 @@ import { ArrowLeft, ArrowRight, Quote } from 'lucide-react';
 
 const testimonials = [
   {
-    text: "Growthrasta completely transformed our online presence. Our organic traffic increased by 300% in just 6 months, and our conversion rate doubled.",
-    name: "Sarah Jenkins",
-    role: "CMO, TechNova Solutions",
-    image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=200",
+    text: "Growthrasta completely transformed our online presence. Our organic traffic increased by 300% in just 6 months, and our conversion rate doubled across India.",
+    name: "Rajesh Kumar",
+    role: "CMO, TechNova India",
+    image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&q=80&w=200", 
   },
   {
-    text: "Their strategic approach to our social media campaigns led to our most successful product launch to date. The ROI has been incredible.",
-    name: "David Chen",
+    text: "Their strategic approach to our social media campaigns led to our most successful regional product launch to date. The local ROI has been incredible.",
+    name: "Priya Sharma",
     role: "Founder, Elevate Fitness",
-    image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=200",
+    image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=200", 
   },
   {
-    text: "Professional, data-driven, and highly creative. They don't just execute tasks; they act as a true extension of our internal marketing team.",
-    name: "Elena Rodriguez",
+    text: "Professional, data-driven, and highly creative. They don't just execute tasks; they act as a true extension of our internal marketing team in Mumbai.",
+    name: "Amit Patel",
     role: "VP Marketing, Global Trade Co.",
-    image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&q=80&w=200",
+    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=200", 
   },
 ];
 
