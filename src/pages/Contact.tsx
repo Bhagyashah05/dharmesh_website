@@ -39,7 +39,7 @@ export default function Contact() {
         <div className="container mx-auto px-6 relative z-10 text-center">
           <motion.h1 
             initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} 
-            className="text-5xl md:text-7xl font-extrabold mb-6"
+            className="text-5xl md:text-7xl font-extrabold mb-6 text-gray-900 dark:text-white"
             dangerouslySetInnerHTML={{ __html: pageData?.title || `Let's Build <span class="text-accent-blue">Together</span>` }}
           />
           <motion.div 
