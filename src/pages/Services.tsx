@@ -72,18 +72,19 @@ export default function Services() {
                       className="text-2xl font-bold mb-4 text-gray-900 dark:text-white"
                       dangerouslySetInnerHTML={{ __html: service.title }}
                     />
-                    <p 
-                      className="text-gray-600 dark:text-gray-400 leading-relaxed mb-8"
-                      dangerouslySetInnerHTML={{ __html: service.excerpt }}
-                    />
-                    {service.content && (
+                    {service.content ? (
                       <div 
-                        className="prose prose-sm dark:prose-invert max-w-none 
+                        className="prose prose-sm dark:prose-invert max-w-none text-gray-600 dark:text-gray-400 
                         prose-headings:text-gray-900 dark:prose-headings:text-white prose-headings:font-bold
                         prose-p:text-gray-600 dark:prose-p:text-gray-400
                         [&>ul]:list-disc [&>ul]:pl-5 [&>ul>li]:text-gray-700 dark:[&>ul>li]:text-gray-300 [&>ul>li]:mb-2
                         [&>ul>li::marker]:text-accent-blue"
                         dangerouslySetInnerHTML={{ __html: service.content }}
+                      />
+                    ) : (
+                      <p 
+                        className="text-gray-600 dark:text-gray-400 leading-relaxed mb-8"
+                        dangerouslySetInnerHTML={{ __html: service.excerpt }}
                       />
                     )}
                   </motion.div>
