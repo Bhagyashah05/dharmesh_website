@@ -1,4 +1,4 @@
-export const WP_API_URL = import.meta.env.VITE_WP_API_URL || 'https://growthrasta.com';
+export const WP_API_URL = import.meta.env.VITE_WP_API_URL || 'https://cms.growthrasta.com';
 
 export interface FormattedPost {
   id: number;
