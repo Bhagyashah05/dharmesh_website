@@ -61,9 +61,26 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="border-t border-gray-200 dark:border-white/10 pt-8 flex flex-col md:flex-row items-center justify-between text-sm text-gray-500">
-          <p>&copy; {new Date().getFullYear()} Growthrasta. All rights reserved.</p>
-          <div className="flex items-center space-x-6 mt-4 md:mt-0">
+        <div className="border-t border-gray-200 dark:border-white/10 pt-8 flex flex-col md:flex-row items-center justify-between text-sm text-gray-500 gap-6 md:gap-0">
+          <div className="md:w-1/3 text-center md:text-left">
+            <p>&copy; {new Date().getFullYear()} Growthrasta. All rights reserved.</p>
+          </div>
+          
+          <div className="md:w-1/3 flex justify-center items-center">
+            <p className="flex items-center justify-center text-gray-500">
+              Made with <span className="text-red-500 mx-1.5 animate-pulse">❤️</span> by 
+              <a 
+                href="https://www.linkedin.com/in/bhagya-shah-978514220/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="font-bold text-gray-900 dark:text-white ml-1.5 hover:text-accent-blue dark:hover:text-accent-lightBlue transition-colors"
+              >
+                Bhagya
+              </a>
+            </p>
+          </div>
+
+          <div className="md:w-1/3 flex items-center justify-center md:justify-end space-x-6">
             <Link to="#" className="hover:text-gray-900 dark:hover:text-white transition-colors">Privacy Policy</Link>
             <Link to="#" className="hover:text-gray-900 dark:hover:text-white transition-colors">Terms of Service</Link>
           </div>
