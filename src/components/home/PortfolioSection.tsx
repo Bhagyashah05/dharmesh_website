@@ -79,15 +79,22 @@ export default function PortfolioSection() {
                 No portfolio items found. Add some posts in the "Portfolio" category in WordPress!
               </div>
             ) : (
-              filteredProjects.map((project) => (
-                <motion.div
+              filteredProjects.map((project) => {
+                const isDesigns = project.title.toLowerCase().includes('design');
+                const href = isDesigns ? "https://drive.google.com/drive/folders/1wSp67cWGfwfTn17-eleVraQi8mhk0APF" : undefined;
+                
+                return (
+                <motion.a
                   key={project.id}
+                  href={href}
+                  target={isDesigns ? "_blank" : "_self"}
+                  rel={isDesigns ? "noopener noreferrer" : ""}
                   layout
                   initial={{ opacity: 0, scale: 0.9 }}
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0, scale: 0.9 }}
                   transition={{ duration: 0.3 }}
-                  className="group relative rounded-2xl overflow-hidden aspect-[4/3] bg-white/5 cursor-pointer"
+                  className="group relative rounded-2xl overflow-hidden aspect-[4/3] bg-white/5 cursor-pointer block"
                 >
                   <img
                     src={project.image}
@@ -102,16 +109,22 @@ export default function PortfolioSection() {
                         {project.category}
                       </span>
                       <h3 
-                        className="text-2xl font-bold text-white group-hover:text-accent-blue transition-colors"
+                        className="text-2xl font-bold text-white group-hover:text-accent-blue transition-colors mb-2"
                         dangerouslySetInnerHTML={{ __html: project.title }}
                       />
                     </div>
-                    <div className="w-12 h-12 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300">
-                      <ArrowUpRight className="w-6 h-6" />
+                    <div className="flex items-center gap-3 opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300">
+                      <span className="text-white font-medium whitespace-nowrap hidden sm:block">
+                        {isDesigns ? 'View Designs' : 'View Project'}
+                      </span>
+                      <div className="w-12 h-12 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center text-white">
+                        <ArrowUpRight className="w-6 h-6" />
+                      </div>
                     </div>
                   </div>
-                </motion.div>
-              ))
+                  </motion.a>
+              );
+            })
             )}
           </AnimatePresence>
         </motion.div>
