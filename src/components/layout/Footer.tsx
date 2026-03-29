@@ -24,7 +24,7 @@ export default function Footer() {
               </a>
             </div>
           </div>
-          
+
           <div>
             <h4 className="text-gray-900 dark:text-white font-bold mb-6 tracking-wider">SERVICES</h4>
             <ul className="space-y-4">
@@ -41,7 +41,7 @@ export default function Footer() {
           <div>
             <h4 className="text-gray-900 dark:text-white font-bold mb-6 tracking-wider">COMPANY</h4>
             <ul className="space-y-4">
-              {['About Us', 'Careers', 'Our Work', 'Blog', 'Contact'].map((item, idx) => (
+              {['About', 'Portfolio', 'Blog', 'Contact'].map((item, idx) => (
                 <li key={idx}>
                   <Link to={`/${item.toLowerCase().replace(' ', '')}`} className="text-gray-600 dark:text-gray-400 hover:text-accent-blue dark:hover:text-accent-lightBlue transition-colors">
                     {item}
@@ -54,7 +54,7 @@ export default function Footer() {
           <div>
             <h4 className="text-gray-900 dark:text-white font-bold mb-6 tracking-wider">CONTACT</h4>
             <ul className="space-y-4 text-gray-600 dark:text-gray-400">
-              <li>Ahmedabad, Gujarat<br/>India</li>
+              <li>Ahmedabad, Gujarat<br />India</li>
               <li>info@growthrasta.com</li>
               <li>96017 99398</li>
             </ul>
@@ -65,13 +65,13 @@ export default function Footer() {
           <div className="md:w-1/3 text-center md:text-left">
             <p>&copy; {new Date().getFullYear()} Growthrasta. All rights reserved.</p>
           </div>
-          
+
           <div className="md:w-1/3 flex justify-center items-center">
             <p className="flex items-center justify-center text-gray-500">
-              Made with <span className="text-red-500 mx-1.5 animate-pulse">❤️</span> by 
-              <a 
-                href="https://www.linkedin.com/in/bhagya-shah-978514220/" 
-                target="_blank" 
+              Made with <span className="text-red-500 mx-1.5 animate-pulse">❤️</span> by
+              <a
+                href="https://www.linkedin.com/in/bhagya-shah-978514220/"
+                target="_blank"
                 rel="noopener noreferrer"
                 className="font-bold text-gray-900 dark:text-white ml-1.5 hover:text-accent-blue dark:hover:text-accent-lightBlue transition-colors"
               >
